@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>Database</title>
+	
+    <style> 
+		
+		body {
+  			font-family: 'Lato', sans-serif;
+            margin: 1.25em;	
+        }
+		
+		a {
+			text-decoration: underline;
+			
+		}
+		
+		/* fonts */
+		
+		.lato-thin {
+		  font-family: "Lato", serif;
+		  font-weight: 100;
+		  font-style: normal;
+		}
+
+		.lato-light {
+		  font-family: "Lato", serif;
+		  font-weight: 300;
+		  font-style: normal;
+		}
+
+		.lato-regular {
+		  font-family: "Lato", serif;
+		  font-weight: 400;
+		  font-style: normal;
+		}
+
+		.lato-bold {
+		  font-family: "Lato", serif;
+		  font-weight: 700;
+		  font-style: normal;
+		}
+
+		.lato-black {
+		  font-family: "Lato", serif;
+		  font-weight: 900;
+		  font-style: normal;
+		}
+
+		.lato-thin-italic {
+		  font-family: "Lato", serif;
+		  font-weight: 100;
+		  font-style: italic;
+		}
+
+		.lato-light-italic {
+		  font-family: "Lato", serif;
+		  font-weight: 300;
+		  font-style: italic;
+		}
+
+		.lato-regular-italic {
+		  font-family: "Lato", serif;
+		  font-weight: 400;
+		  font-style: italic;
+		}
+
+		.lato-bold-italic {
+		  font-family: "Lato", serif;
+		  font-weight: 700;
+		  font-style: italic;
+		}
+
+		.lato-black-italic {
+		  font-family: "Lato", serif;
+		  font-weight: 900;
+		  font-style: italic;
+		}
+		
+		/* */
+		
+		.database-title {
+			text-align: center;
+			margin-bottom: 0.0625em;
+			margin-top: 0.0625em;
+		}
+		
+		
+		.filters-title {
+			text-align: left;
+			margin-bottom: 0.0625em;
+			margin-top: 0em;
+		}
+		
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-gap: 1.25em;
+        }
+		
+		.clear-filters {
+			padding: 0.5em 1em;
+			border-color: #2b737e;
+			border-radius: 0.25em;
+			cursor: pointer;
+			margin-bottom: 0.0625em;
+		}
+		
+		.clear-filters:hover {
+			background-color: #2b737e;
+			color: white;
+		}
+		
+		.button-clear {
+			display: flex;
+			justify-content: right;
+		}
+		
+		.title-button {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;	
+		}
+		
+        .filter {
+            display: flex;
+            flex-direction: column;
+            grid-gap: 0.625em;
+			background-color: #bedee6;
+			padding: 0.625em;
+			border: 0.1875em solid #aaa;
+			height: 43.75em;
+			border-radius: 0.25em;
+        }
+		
+		.filter .years input {
+			flex: 1;
+			height: 1.5em;
+			align-content: center;
+		}
+		
+		.years-dash {
+			display: flex;
+			align-items: center;
+		}
+		
+		.dash {
+			margin-left: 1em;
+			margin-right: 1em;
+		}
+		
+		.filter .skills-filter {
+			overflow-y: scroll;
+			height: 25em;
+			background-color: white;
+			border: 0.125em solid #aaa;
+		}
+		
+		.skills-filter input[type="checkbox"] {
+			margin-right: 0.4375em;
+		}
+		
+		.filter-label {
+			font-weight: bold;
+			color: #595858;
+		}
+  
+		.back {
+            display: flex;
+            flex-direction: column;
+            grid-gap: 0.625em;
+			padding: 0.625em;
+			border: 0.1875em solid #aaa;
+			border-radius: 0.25em;
+			margin-bottom: 1em;
+			color: #000;
+			
+			a {
+				color: #000;
+				text-decoration: none;
+		
+			}
+        }
+		
+		.back:hover {
+			background-color: #bedee6;
+			cursor: grab;
+
+		}
+		
+		.back-div {
+			display: flex;
+			justify-content: right;
+		}
+	
+		/* */
+		
+        .content {
+            display: flex;
+            flex-direction: column;
+            grid-gap: 1.25em;
+			border: 0.1875em solid #aaa;
+			padding: 1.25em;
+			background-color: #e9eaeb;
+			border-radius: 0.25em;
+        }
+		
+		.category1 {
+			padding: 0.125em 0.25em; 
+			margin-top: 0.125em;
+			background-color: #cddbf3; 
+			border-radius: 0.25em;
+			width: 14em;
+		}
+		
+		.category2 {
+			padding: 0.125em 0.25em;
+			margin-top: 0.125em;
+			background-color: #f5cbdd;
+			border-radius: 0.25em;
+			width: 29.7em;
+		}
+		
+		.category3 {
+			padding: 0.125em 0.25em;
+			margin-top: 0.125em;
+			background-color: #f3f3cf;
+			border-radius: 0.25em;
+			width: 17.3em;
+		}
+		
+		.search {
+			height: 1.5em;
+		}
+		
+		/* product refers to the piece */
+		
+		.product-name {
+			margin-bottom: 0.1875em;
+			font-size: 1.25em;
+		}
+		
+		.product-name a {
+			color: #066075;	
+		}
+		
+		.composer-name {
+			font-size: 1.0625em;
+			margin-top: 0.1875em;
+		}
+
+		.product {
+			border: 0.1875em solid #ddd;
+			padding: 0.625em;
+			margin-bottom: 0.625em;
+			font-size: 1.0625em;
+			background-color: #fff;
+			border-radius: 0.25em;
+		}
+
+		.product-details {
+			margin-top: 0.1875em;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.product-detail {
+			margin-bottom: 0.1875em;
+			padding-bottom: 0.3125em;
+		}
+		
+		.label {
+			font-weight: bold;
+			color: #595858;
+		}
+		
+		.value {
+			margin-left: 0;
+		}
+		
+		.number-detail {
+			display: flex;
+		}
+		
+		.skills-container {
+			display: flex;
+			flex-wrap: wrap; 
+			gap: 0.5em; 
+			align-items: flex-start; 
+		}
+
+		.skill {
+			padding: 0.125em 0.25em; 
+			background-color: #f0f0f0; 
+			border-radius: 0.25em; 
+		}
+			
+		/* */
+		
+		.sorting {
+			margin-left: 0em;
+			font-weight: bold;
+		}
+		
+		.sorting label {
+			margin-right: 0.625em;
+		}
+		
+		.sorting select {
+			padding: 0.3125em;
+			font-size: 0.875em;
+		}
+		
+		/* */
+		
+		@media (max-width: 1000px) {
+				
+			.container {
+				grid-template-columns: 1fr;
+			}
+
+			.filter {
+				height: auto; 
+				margin-bottom: 0.5em; 
+			}
+
+			.content {
+				padding: 1em; 
+			}
+
+			.product {
+				font-size: 0.9em; 
+				padding: 0.5em; 
+			}
+
+			.skills-filter {
+				height: auto; 
+				overflow-y: visible; 
+			}
+
+			.search {
+				width: 100%; 
+				margin-bottom: 1em; 
+			}
+		}
+		
+		/* */
+		
+			.filters-container {
+			 	display: block;
+				max-height: 50em;
+				overflow: hidden;
+				opacity: 1;
+			 	transition: max-height 0.3s ease-in-out;
+			}
+
+			.toggle-filters {
+			 	display: none;
+				border-color: #2b737e;
+				border-radius: 0.25em;
+				padding: 0.5em 1em;
+				margin-bottom: 0.5em;
+				cursor: pointer;
+				width: 100%;
+			}
+
+			.toggle-filters:hover {
+				background-color: #2b737e;
+				color: white;
+			}
+		
+			@media (max-width: 1050px) {
+				.filters-container {
+					max-height: 0;
+					
+					transition: max-height 0.3s ease-in-out;
+				}
+			}
+
+			@media (max-width: 1000px) {
+			  .filters-container {
+				display: auto; 
+				max-height: 0;
+				overflow: hidden;
+			  }
+
+			  .toggle-filters {
+				display: block;
+			  }
+			}
+		
+		.pieces-style {
+			font-style: italic; 
+		}
+		
+		.pagination-controls {
+			display: flex;
+			justify-content: right;
+			gap: 0.25em;
+		}
+		
+
+    </style>
+	
+</head>
+
+<body>
+<div class="back-div">
+    <button class="back" onclick="window.location.href='https://www.hiddenexcerpts.com'">Back to Website</button>
+</div>
+	
+	
+    <div class="container">        
+		
+		<div class="filters-wrapper">
+			<button id="toggle-filters" class="toggle-filters">Show Filters</button>
+			<div id="filters-container" class="filters-container">
+			
+			<div class="filter">
+
+				<div class="title-button">
+					<h3 class="filters-title">Filter Works</h3>
+					<div class=button-clear>
+						<button class="clear-filters" id="clearFilters" onClick="clearFilters()">Clear Filters</button>
+					</div>	
+				</div>
+
+				<label class="filter-label">Category:</label>
+				<div>
+					<label><input type="checkbox" id="category1" value="Category1" onchange="applyFilter()"> Category 1</label><br>
+					<label><input type="checkbox" id="category2" value="Category2" onchange="applyFilter()"> Category 2</label><br>
+					<label><input type="checkbox" id="category3" value="Category3" onchange="applyFilter()"> Category 3</label><br>
+				</div>
+
+				<label class="filter-label">Ensemble:</label>
+				<div>
+					<label><input type="checkbox" id="ensembleFullOrchestra" value="fullOrchestra" onchange="applyFilter()"> Full Orchestra</label><br>
+					<label><input type="checkbox" id="ensembleChamberOrchestra" value="chamberOrchestra" onchange="applyFilter()"> Chamber Orchestra</label><br>
+					<label><input type="checkbox" id="ensembleWindEnsemble" value="windEnsemble" onchange="applyFilter()"> Wind Ensemble</label><br>
+					<label><input type="checkbox" id="ensembleOpera" value="opera" onchange="applyFilter()"> Opera</label><br>
+				</div>
+
+				<div class="years">
+				<label class="filter-label" for="startYearInput">Year Composed:</label>
+
+					<div class="years-dash">
+					<input
+						type="number"
+						id="startYearInput"
+						min="1700"
+						max="2100"
+						placeholder="Start Year"
+						oninput="applyFilter()"
+					>
+					<p class="dash">-</p>
+					<input
+						type="number"
+						id="endYearInput"
+						min="1700"
+						max="2100"
+						placeholder="End Year"
+						oninput="applyFilter()"
+					>
+					</div>
+				</div>
+
+				<label class="filter-label" for="skills-filter">Skills:</label>
+				<div class="skills-filter">
+					<label><input type="checkbox" name="skills" value="accuracy" onchange="applyFilter()">Accuracy</label><br>
+					<label><input type="checkbox" name="skills" value="atonality" onchange="applyFilter()">Atonality</label><br>
+					<label><input type="checkbox" name="skills" value="cadenzaStyle" onchange="applyFilter()">Cadenza Style</label><br>
+					<label><input type="checkbox" name="skills" value="changingTimeSignature" onchange="applyFilter()">Changing Time Signature</label><br>
+					<label><input type="checkbox" name="skills" value="doubleTonguing" onchange="applyFilter()">Double Tonguing</label><br>
+					<label><input type="checkbox" name="skills" value="dynamicContrast" onchange="applyFilter()">Dynamic Contrast</label><br>
+					<label><input type="checkbox" name="skills" value="echoHorn" onchange="applyFilter()">Echo Horn</label><br>
+					<label><input type="checkbox" name="skills" value="endurance" onchange="applyFilter()">Endurance</label><br>
+					<label><input type="checkbox" name="skills" value="fingerFluency" onchange="applyFilter()">Finger Fluency</label><br>
+					<label><input type="checkbox" name="skills" value="highRegister" onchange="applyFilter()">High Register</label><br>
+					<label><input type="checkbox" name="skills" value="loudPlaying" onchange="applyFilter()">Loud Playing</label><br>
+					<label><input type="checkbox" name="skills" value="lowRegister" onchange="applyFilter()">Low Register</label><br>
+					<label><input type="checkbox" name="skills" value="marcatoStyle" onchange="applyFilter()">Marcato Style</label><br>
+					<label><input type="checkbox" name="skills" value="ornaments" onchange="applyFilter()">Ornaments</label><br>
+					<label><input type="checkbox" name="skills" value="phrasing" onchange="applyFilter()">Phrasing</label><br>
+					<label><input type="checkbox" name="skills" value="rhythms" onchange="applyFilter()">Rhythms</label><br>
+					<label><input type="checkbox" name="skills" value="scalePractice" onchange="applyFilter()">Scale Practice</label><br>
+					<label><input type="checkbox" name="skills" value="sectionPlaying" onchange="applyFilter()">Section Playing</label><br>
+					<label><input type="checkbox" name="skills" value="slurringFlexibility" onchange="applyFilter()">Slurring Flexibility</label><br>
+					<label><input type="checkbox" name="skills" value="softPlaying" onchange="applyFilter()">Soft Playing</label><br>
+					<label><input type="checkbox" name="skills" value="staccatoStyle" onchange="applyFilter()">Staccato Style</label><br>
+					<label><input type="checkbox" name="skills" value="stoppedHorn" onchange="applyFilter()">Stopped Horn</label><br>
+					<label><input type="checkbox" name="skills" value="tonguingFlexibility" onchange="applyFilter()">Tonguing Flexibility</label><br>
+					<label><input type="checkbox" name="skills" value="transposition" onchange="applyFilter()">Transposition</label><br>
+					<label><input type="checkbox" name="skills" value="trills" onchange="applyFilter()">Trills</label><br>
+					<label><input type="checkbox" name="skills" value="tripleTonguing" onchange="applyFilter()">Triple Tonguing</label><br>
+				</div>
+
+			</div>
+				
+		</div>
+			
+	</div>
+
+        <!-- Piece display area -->
+		
+        <div class="content">
+			<h1 class="database-title">Database of Works</h1>
+            <input type="text" class="search" id="search" oninput="applyFilter()" placeholder="Search Works...">
+			<div id="pieces-info"></div>
+			<div class="sorting">
+				<label for="sortBy">Sort Results</label>
+				<select id="sortBy" onchange="applyFilter()">
+					<option value="title">Title of Composition</option>
+					<option value="composer">Name of Composer</option>
+					<option value="year">Composition Year</option>
+				</select>
+			</div>
+			<div id="pagination-controls" class="pagination-controls">
+				<button id="prev-btn" disabled>Previous</button>
+				<span id="page-info"></span>
+				<button id="next-btn">Next</button>
+			</div>
+            <div id="product-list"></div>
+			
+
+	
+        </div>
+    </div>
+    
+<script>
+    // *THIS IS WHERE TO PUT THE EXCERPTS* 
+	// purcahse hiddenexcerpts domain for the permalinks to work
+    const products = [
+        { id: 1, 
+            name: "Cappricio Espagnol, Op. 34", 
+            url: "https://www.hiddenexcerpts.com/rimsky-korsakov-capriccio-espagnol", // permalink - 
+            composer: "Nikolay Rimsky-Korsakov", 
+            category: "Category1", 
+            year: 1887, 
+            ensemble: "fullOrchestra", 
+		 	excerpts: 2,
+            skills: ["phrasing", "sectionPlaying", "softPlaying", "accuracy", "stoppedHorn", "rhythms", "tonguingFlexibility"] 
+        },
+        { id: 2, 
+            name: "Symphony No. 1 in B minor, Op. 4", 
+            url: "https://www.hiddenexcerpts.com/arensky-symphony1.html",
+            composer: "Anton Arensky", 
+            category: "Category1", 
+            year: 1883, 
+            ensemble: "fullOrchestra", 
+		 	excerpts: 1,
+            skills: ["dynamicContrast", "rhythms"] 
+        },
+        { id: 3,
+            name: "Symphony in E minor, Op. 32 'Gaelic'",
+            url: "https://www.hiddenhornexcerpts.com/beach-gaelicsymphony.html", 
+            composer: "Amy Beach",
+            category: "Category2",
+            year: 1894,
+            ensemble: "fullOrchestra",
+		 	excerpts: 1, 
+            skills: ["phrasing", "slurringFlexibility", "softPlaying"] 
+        },
+        { id: 4,
+            name: "Sumervar",
+            url: "https://www.hiddenexcerpts.com/barnett-sumervar.html", //
+            composer: "Carol Barnett",
+            category: "Category3",
+            year: 1988,
+            ensemble: "chamberOrchestra",
+		 	excerpts: 1, 
+            skills: ["fingerFluency", "highRegister", "rhythms"] 
+        },
+        { id: 5,
+            name: "Suite No. 1, Op. 3",
+            url: "https://www.hiddenexcerpts.com/bartok-suite1.html", //
+            composer: "Béla Bartók",
+            category: "Category1",
+            displayYear: "1905, rev. 1920",
+		 	year: 1905,
+            ensemble: "fullOrchestra",
+		 	excerpts: 1, 
+            skills: ["accuracy", "highRegister", "rhythms", "slurredFlexibility"] 
+        },		
+		{
+			id: 6,
+			name: "Symphonic Sketches",
+			url: "https://www.hiddenexcerpts.com/chadwick-symphonicsketches.html", //
+			composer: "George Chadwick",
+			category: "Category2",
+			year: 1904,
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["phrasing", "staccatoStyle", "tonguingFlexibility", "endurance", "loudPlaying", "slurredFlexibility"]
+		},
+		{
+			id: 7,
+			name: "Symphony No. 4", 
+			url: "https://www.hiddenexcerpts.com/maslanka4.html", //
+			composer: "David Maslanka",
+			category: "Category3",
+			year: 1993,
+			ensemble: "windEnsemble",
+			excerpts: 4,
+			skills: ["endurance", "highRegister", "loudPlaying", "marcatoStyle", "accuracy", "cadenzaStyle", "dynamicContrast", "phrasing", "slurringFlexibility", "fingerFluency", "rhythms", "tonguingFlexibility"]
+		},
+		{
+			id: 8,
+			name: "L'arlésienne (Suite No. 1)", 
+			url: "https://www.hiddenexcerpts.com/bizet-larlesienne1.html", //
+			composer: "Georges Bizet",
+			category: "Category1",
+			year: 1872,
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["phrasing", "slurredFlexibility", "softPlaying"]
+		},
+		{
+			id: 9,
+			name: "L'arlésienne (Suite No. 2)", 
+			url: "https://www.hiddenexcerpts.com/bizet-larlesienne2.html", //
+			composer: "Georges Bizet",
+			category: "Category1",
+			year: 1879,
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["dynamicContrast", "endurance", "phrasing", "slurringFlexibility", "softPlaying"]
+		},
+		{
+			id: 10,
+			name: "In The Steppes of Central Asia",
+			url: "https://www.hiddenexcerpts.com/borodin-steppesasia.html", //
+			composer: "Alexander Borodin",
+			category: "Category1",
+			year: 1880,
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["slurredFlexibility", "softPlaying", "loudPlaying", "marcatoStyle", "rhythms"]
+		},
+		{
+			id: 11,
+			name: "Symphony No. 2",
+			url: "https://www.hiddenexcerpts.com/borodin-symphony2.html", //
+			composer: "Alexander Borodin",
+			category: "Category1",
+			displayYear: "1869-1876",
+			year: 1869,
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["endurance", "phrasing", "rhythms", "slurringFlexibility", "softPlaying", "accuracy"]
+		},
+		{
+			id: 12,
+			name: "Symphony No. 3, Op. 51",
+			url: "https://www.hiddenexcerpts.com/bruch-symphony3.html", //
+			composer: "Max Bruch",
+			category: "Category1",
+			year: "1886",
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["dynamicContrast", "endurance", "phrasing", "slurredFlexibility", "loudPlaying", "marcatoStyle", "rhythms"]
+		},
+		{
+			id: 13,
+			name: "Schicksalslied, Op. 54",
+			url: "https://www.hiddenexcerpts.com/brahms-schick.html", //
+			composer: "Johannes Brahms",
+			category: "Category1",
+			displayYear: "1868–1871",
+			year: 1868,
+			ensemble: "chamberOrchestra",
+			displayEnsemble: "Chamber Orchestra & Choir",
+			excerpts: 1,
+			skills: ["endurance", "highRegister", "phrasing", "slurredFlexibility", "transposition"]
+		},
+		{
+			id: 14,
+			name: "Symphony in C",
+			url: "https://www.hiddenexcerpts.com/dukas-symphonyinc.html", //
+			composer: "Paul Dukas",
+			category: "Category1",
+			year: 1896,
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["loudPlaying", "marcatoStyle", "tonguedFlexibility", "accuracy", "echoHorn", "rhythms", "slurredFlexibility", "softPlaying"]
+		},
+		{
+			id: 15,
+			name: "Symphony No. 8 in G major, Op. 88, B. 163",
+			url: "https://www.hiddenexcerpts.com/dvorak-symphony8,html", //
+			composer: "Antonín Dvořák",
+			category: "Category1",
+			year: 1889,
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["dynamicContrast", "marcatoStyle", "rhythms", "tonguingFlexibility"]
+		},
+		{
+			id: 16,
+			name: "Le Chasseur Maudit",
+			url: "https://www.hiddenexcerpts.com/franck-le-chasseur.html", //
+			composer: "César Franck",
+			category: "Category1",
+			year: 1882,
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["loudPlaying", "marcatoStyle", "rhythms"]
+		},
+		{
+			id: 17,
+			name: "Scènes de Ballet, Op. 52",
+			url: "https://www.hiddenexcerpts.com/glazunov-scenes-de-ballet.html", //
+			composer: "Alexander Glazunov",
+			category: "Category1",
+			year: 1894,
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["accuracy", "fingerFluency", "loudPlaying", "marcatoStyle", "tonguingFlexibility"]
+		},
+		{
+			id: 18,
+			name: "Symphony No. 3 in B minor \"Ilia Mourometz\", Op. 42", 
+			url: "https://www.hiddenexcerpts.com/gliere-symphony3.html", //
+			composer: "Reinhold Glière",
+			category: "Category1",
+			year: 1912,
+			ensemble: "fullOrchestra",
+			excerpts: 3,
+			skills: ["loudPlaying", "marcatoStyle", "rhythms", "accuracy", "tonguingFlexibility", "endurance", "phrasing", "slurringFlexibility"]
+		},
+		{
+			id: 19,
+			name: "Symphony No. 1 in G minor", 
+			url: "https://www.hiddenexcerpts.com/kalinnikov-symphony1.html", //
+			composer: "Vasily Kalinnikov",
+			category: "Category1",
+			displayYear: "1894–1895",
+			year: 1894,
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["phrasing", "slurredFlexibility"]		
+		},
+		{
+			id: 20,
+			name: "Le roi d'Ys (Overture)", 
+			url: "https://www.hiddenexcerpts.com/lalo-le-roi.html", //
+			composer: "Édouard Lalo",
+			category: "Category1",
+			displayYear: "1891–1892",
+			year: 1891,
+			ensemble: "opera",
+			excerpts: 1,
+			skills: ["dynamicContrast", "loudPlaying", "marcatoStyle", "staccatoStyle"]		
+		},	
+		{
+			id: 21,
+			name: "Symphony No. 5, Op. 50, FS 97", 
+			url: "https://www.hiddenexcerpts.com/nielsen-symphony5.html", //
+			composer: "Carl Nielsen",
+			category: "Category1",
+			year: 1922,
+			ensemble: "fullOrchestra",
+			excerpts: 3,
+			skills: ["phrasing", "dynamicContrast", "marcatoPlaying", "slurredFlexibility"]	
+		},
+		{
+			id: 22,
+			name: "Symphony No. 2 in E minor", 
+			url: "https://www.hiddenexcerpts.com/rachmaninoff-symphony2.html", //
+			composer: "Sergei Rachmaninoff",
+			category: "Category1",
+			displayYear: "1906–1907",
+			year: 1906,
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["dynamicContrast", "slurredFlexibility", "softPlaying", "transposition"]	
+		},
+		{
+			id: 23,
+			name: "Symphony No. 2, Op. 9, \"Antar\"", 
+			url: "https://www.hiddenexcerpts.com/rimsky-korsakov-symphony2.html", //
+			composer: "Nikolay Rimsky-Korsakov",
+			category: "Category1",
+			displayYear: "1863–1903",
+			year: 1863,
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["endurance", "highRegister", "phrasing", "slurringFlexibility", "softPlaying"]	
+		},
+		{
+			id: 24,
+			name: "Le siège de Corinthe", 
+			url: "https://www.hiddenexcerpts.com/rossini-lesiege.html", //
+			composer: "Gioacchino Rossini",
+			category: "Category1",
+			year: "1826",
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["accuracy", "endurance", "fingerFluency", "phrasing", "scalePractice", "slurringFlexibility", "tonguingFlexibility"]	
+		},
+		{
+			id: 25,
+			name: "En Saga", 
+			url: "https://www.hiddenexcerpts.com/sibelius-en-saga.html", //
+			composer: "Jean Sibelius",
+			category: "Category1",
+			displayYear: "1891–1892",
+			year: 1891,
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["loudPlaying", "lowRegister", "phrasing", "slurringFlexibility", "endurance", "marcatoStyle"]	
+		},
+		{
+			id: 26,
+			name: "Finlandia, Op. 26", 
+			url: "https://www.hiddenexcerpts.com/sibelius-finlandia.html", //
+			composer: "Jean Sibelius",
+			category: "Category1",
+			year: "1900",
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["highRegister", "loudPlaying", "marcatoStyle", "rhythms"]	
+		},
+		{
+			id: 27,
+			name: "Feu d'artifice (Fireworks), Op. 4", 
+			url: "https://www.hiddenexcerpts.com/stravinsky-fireworks.html", //
+			composer: "Igor Stravinsky",
+			category: "Category1",
+			year: "1908",
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["accuracy", "loudPlaying", "marcatoStyle", "rhythms", "tonguingFlexibility"]	
+		},	
+		{
+			id: 28,
+			name: "Symphony No. 1 in G Minor, Op. 13 \"Winter Daydreams\"", 
+			url: "https://www.hiddenexcerpts.com/tchaikovksy-symphony1.html", //
+			composer: "Pyotr Ilyich Tchaikovsky",
+			category: "Category1",
+			year: "1866",
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["endurance", "loudPlaying", "marcatoStyle"]	
+		},		
+		{
+			id: 29,
+			name: "A Sea Symphony (Symphony No.1)", 
+			url: "https://www.hiddenexcerpts.com/vaughan-williams-symphony1.html", //
+			composer: "Ralph Vaughan Williams",
+			category: "Category1",
+			year: "1910",
+			ensemble: "fullOrchestra",
+			displayEnsemble: "Full Orchestra (with Soprano, Baritone, & Chorus)",
+			excerpts: 1,
+			skills: ["softPlaying"]	
+		},
+		{
+			id: 30,
+			name: "Callirhoë", 
+			url: "https://www.hiddenexcerpts.com/chaminade-callirhoe.html", //
+			composer: "Cécile Chaminade",
+			category: "Category2",
+			year: "1887",
+			ensemble: "fullOrchestra",
+			displayEnsemble: "Full Orchestra (ballet)",
+			excerpts: 1,
+			skills: ["highRegister", "phrasing", "softPlaying", "transposition"]	
+		},
+		{
+			id: 31,
+			name: "Istar, variations symphoniques, Op. 42̈", 
+			url: "https://www.hiddenexcerpts.com/dindy-istar.html", //
+			composer: "Vincent d'Indy",
+			category: "Category2",
+			year: "1896",
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["accuracy", "softPlaying", "stoppedHorn"]	
+		},
+		{
+			id: 32,
+			name: "Symphony No. 1, \"Rustic Wedding\"", 
+			url: "https://www.hiddenexcerpts.com/goldmark-symphony1.html", //
+			composer: "Karl Goldmark",
+			category: "Category2",
+			year: "1875",
+			ensemble: "fullOrchestra",
+			excerpts: 2,
+			skills: ["fingerFluency", "loudPlaying", "staccatoStyle", "tonguingFlexibility", "transposition", "lowRegister", "accuracy"]	
+		},
+		{
+			id: 33,
+			name: "Symphony No. 4 in C-Sharp Minor, Op. 21", 
+			url: "https://www.hiddenexcerpts.com/magnard-symphony4.html", //
+			composer: "Albéric Magnard",
+			category: "Category2",
+			year: "1913",
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["accuracy", "fingerFluency", "loudPlaying", "marcatoStyle"]	
+		},
+		{
+			id: 34,
+			name: "Symphony No. 2, Op. 23", 
+			url: "https://www.hiddenexcerpts.com/rousell-symphony2.html", //
+			composer: "Albert Roussel",
+			category: "Category2",
+			displayYear: "1919–1921",
+			year: 1919,
+			ensemble: "fullOrchestra",
+			excerpts: 3,
+			skills: ["accuracy", "fingerFluency", "highRegister", "loudPlaying", "rhythms", "endurance", "lowRegister", "tonguingFlexibility"]	
+		},	
+		{
+			id: 35,
+			name: "The Wreckers (Overture)", 
+			url: "https://www.hiddenexcerpts.com/smyth-wreckers.html", //
+			composer: "Ethel Smyth",
+			category: "Category2",
+			year: "1906",
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["dynamicContrast", "highRegister", "loudPlaying", "marcatoStyle", "rhythms", "sectionPlaying"]	
+		},	
+		{
+			id: 36,
+			name: "Arcana", 
+			url: "https://www.hiddenexcerpts.com/varese-arcana.html", //
+			composer: "Edgard Varèse",
+			category: "Category2",
+			year: "1927",
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["accuracy", "loudPlaying", "lowRegister", "rhythms"]	
+		},	
+		{
+			id: 37,
+			name: "Hymn for Everyone", 
+			url: "https://www.hiddenexcerpts.com/montgomery-hymn-for-everyone.html", //
+			composer: "Jessie Montgomery",
+			category: "Category3",
+			year: "2021",
+			ensemble: "chamberOrchestra",
+			excerpts: 1,
+			skills: ["dynamicContrast", "phrasing", "softPlaying", "slurringFlexibility"]	
+		},	
+		
+    ];
+
+    function formatString(str) {
+        if (/[a-z][A-Z]/.test(str)) {
+            return str
+                .replace(/([a-z])([A-Z])/g, '$1 $2') // Add spaces between camelCase
+                .replace(/(?:^|\s)\S/g, match => match.toUpperCase()); // Capitalize each word
+        }
+
+        if (str.startsWith("Category")) {
+            const categoryNumber = str.replace("Category", "").trim();
+            if (categoryNumber === "1") {
+                return `Category 1 - Known Composer`;
+            } else if (categoryNumber === "2") {
+                return `Category 2 - Historically Underrepresented or Unknown Composer`;
+            } else if (categoryNumber === "3") {
+                return `Category 3 - Contemporary Composer`;
+            }
+        }
+
+        if (str.startsWith("Excerpt")) {
+            return str.replace(/(\D+)(\d+)/, '$1 $2'); 
+        }
+
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+	
+	//
+	
+	const itemsPerPage = 5; // Number of items per page
+	let currentPage = 1; // Start on the first page
+
+	function displayProducts(filteredProducts) {
+		const productList = document.getElementById('product-list');
+		const pageInfo = document.getElementById('page-info');
+		const prevBtn = document.getElementById('prev-btn');
+		const nextBtn = document.getElementById('next-btn');
+		const piecesInfo = document.getElementById('pieces-info');
+		const piecesNumber = document.getElementById('pieces-number');
+
+		productList.innerHTML = ''; // Clear previous products
+
+		// Update the "Showing X excerpts" message
+		const totalProducts = filteredProducts.length;
+		piecesInfo.textContent = totalProducts === 0 
+			? '0 compositions found'
+			: `${totalProducts} composition${totalProducts > 1 ? 's' : ''} found`;
+		
+		piecesInfo.classList.add('pieces-style');
+
+		// Calculate total pages
+		const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+		if (filteredProducts.length === 0) {
+			pageInfo.textContent = 'Page 1 of 1';
+			prevBtn.disabled = true;
+			nextBtn.disabled = true;
+			return;
+		}
+
+
+		// Paginate products
+		const start = (currentPage - 1) * itemsPerPage;
+		const end = start + itemsPerPage;
+		const paginatedProducts = filteredProducts.slice(start, end);
+
+		paginatedProducts.forEach(product => {
+			const sortedSkills = product.skills
+				.slice()
+				.sort((a, b) => a.localeCompare(b))
+				.map(skill => `<span class="skill">${formatString(skill)}</span>`);
+			const skillsList = sortedSkills.join('');
+
+			let categoryClass = '';
+			if (product.category === 'Category1') categoryClass = 'category1';
+			else if (product.category === 'Category2') categoryClass = 'category2';
+			else if (product.category === 'Category3') categoryClass = 'category3';
+
+			const productElement = document.createElement('div');
+			productElement.className = 'product';
+
+			productElement.innerHTML = `
+				<h1 class="product-name">
+					<a href="${product.url}" target="_blank">${formatString(product.name)}</a>
+				</h1>
+				<h2 class="composer-name">${formatString(product.composer)}</h2>
+				<div class="product-details">
+					<div class="product-detail">
+						<div class="label">Composition Year:</div>
+						<div class="value">${product.displayYear || product.year}</div>
+					</div>
+					<div class="product-detail">
+						<div class="label">Category:</div>
+						<div class="value ${categoryClass}">${formatString(product.category)}</div>
+					</div>
+					<div class="product-detail">
+						<div class="label">Ensemble:</div>
+						<div class="value">${formatString(product.displayEnsemble || product.ensemble)}</div>
+					</div>
+					<div class="product-detail">
+						<div class="number-detail">
+							<div class="label">Number of Excerpts:</div>
+							<div class="value">&nbsp;${product.excerpts}</div>
+						</div>
+					</div>
+					<div class="product-detail">
+						<div class="label">Skills:</div>
+						<div class="value skills-container">${skillsList}</div>
+					</div>
+				</div>
+			`;
+
+			productList.appendChild(productElement);
+		});
+
+		// Update pagination controls
+		updatePaginationControls(filteredProducts);
+	}
+	
+	function updatePaginationControls(filteredProducts) {
+		const pageInfo = document.getElementById('page-info');
+		const prevBtn = document.getElementById('prev-btn');
+		const nextBtn = document.getElementById('next-btn');
+
+		const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+		// If there are no products, set the page to 1 of 1
+		if (filteredProducts.length === 0) {
+			pageInfo.textContent = 'Page 1 of 1';
+			prevBtn.disabled = true;
+			nextBtn.disabled = true;
+			return;
+		}
+
+		prevBtn.disabled = currentPage === 1;
+		nextBtn.disabled = currentPage === totalPages;
+
+		pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+	}
+
+
+	function applyFilter(returnFilteredProducts = false) {
+		// Gather filters
+		const categoryFilter = [];
+		if (document.getElementById('category1').checked) categoryFilter.push('Category1');
+		if (document.getElementById('category2').checked) categoryFilter.push('Category2');
+		if (document.getElementById('category3').checked) categoryFilter.push('Category3');
+
+		const ensembleFilter = [];
+		if (document.getElementById('ensembleFullOrchestra').checked) ensembleFilter.push('fullOrchestra');
+		if (document.getElementById('ensembleWindEnsemble').checked) ensembleFilter.push('windEnsemble');
+		if (document.getElementById('ensembleChamberOrchestra').checked) ensembleFilter.push('chamberOrchestra');
+		if (document.getElementById('ensembleOpera').checked) ensembleFilter.push('opera');
+
+		const searchFilter = document.getElementById('search').value.toLowerCase();
+
+		const skillsCheckboxes = document.querySelectorAll('input[name="skills"]:checked');
+		const selectedSkills = Array.from(skillsCheckboxes).map(checkbox => checkbox.value);
+
+		const startYearInput = parseInt(document.getElementById('startYearInput').value) || null;
+		const endYearInput = parseInt(document.getElementById('endYearInput').value) || null;
+
+		// Start with all products
+		let filteredProducts = products;
+
+		// Apply filters
+		if (categoryFilter.length > 0) {
+			filteredProducts = filteredProducts.filter(product => categoryFilter.includes(product.category));
+			currentPage = 1;
+		}
+
+		if (ensembleFilter.length > 0) {
+			filteredProducts = filteredProducts.filter(product => ensembleFilter.includes(product.ensemble));
+			currentPage = 1;
+		}
+
+		if (startYearInput !== null) {
+			filteredProducts = filteredProducts.filter(product => product.year >= startYearInput);
+			currentPage = 1;
+		}
+		if (endYearInput !== null) {
+			filteredProducts = filteredProducts.filter(product => product.year <= endYearInput);
+			currentPage = 1;
+		}
+
+		if (searchFilter) {
+			filteredProducts = filteredProducts.filter(product =>
+				product.name.toLowerCase().includes(searchFilter) ||
+				product.composer.toLowerCase().includes(searchFilter)
+			);
+			currentPage = 1;
+		}
+
+		if (selectedSkills.length > 0) {
+			filteredProducts = filteredProducts.filter(product =>
+				selectedSkills.every(skill => product.skills.includes(skill))
+			);
+			currentPage = 1;
+		}
+
+		// Sort products
+		const sortBy = document.getElementById('sortBy').value;
+		filteredProducts.sort((a, b) => {
+			if (sortBy === "title") {
+				return a.name.localeCompare(b.name);
+			} else if (sortBy === "composer") {
+				return a.composer.localeCompare(b.composer);
+			} else if (sortBy === "year") {
+				return a.year - b.year;
+			}
+			return 0;
+		});
+
+		if (returnFilteredProducts) {
+			return filteredProducts; // Return only filtered products without rendering
+		}
+
+		// Update UI
+		displayProducts(filteredProducts);
+		updatePaginationControls(filteredProducts);
+	}
+	document.getElementById('prev-btn').addEventListener('click', () => {
+		if (currentPage > 1) {
+			currentPage--;
+			const filteredProducts = applyFilter(true); // Get filtered products without re-rendering
+			displayProducts(filteredProducts);
+			updatePaginationControls(filteredProducts);
+		}
+	});
+
+	document.getElementById('next-btn').addEventListener('click', () => {
+		const filteredProducts = applyFilter(true); // Get filtered products without re-rendering
+		const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+		if (currentPage < totalPages) {
+			currentPage++;
+			displayProducts(filteredProducts);
+			updatePaginationControls(filteredProducts);
+		}
+	});
+
+	// Call applyFilter initially to display products on page load
+	document.addEventListener("DOMContentLoaded", () => {
+		applyFilter();
+	});
+
+
+	function clearFilters() {
+		const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		checkboxes.forEach(checkbox => {
+			checkbox.checked = false;
+		});
+
+		const startYearInput = document.getElementById('startYearInput');
+		if (startYearInput) {
+			startYearInput.value = ""; // Clear the input
+			startYearInput.placeholder = "Start Year"; // Set placeholder
+		}
+
+		const endYearInput = document.getElementById('endYearInput');
+		if (endYearInput) {
+			endYearInput.value = ""; // Clear the input
+			endYearInput.placeholder = "End Year"; // Set placeholder
+		}
+
+		const searchFilter = document.getElementById('search');
+		if (searchFilter) {
+			searchFilter.value = ""; // Clear the input
+			searchFilter.placeholder = "Search Works..."; // Set placeholder
+		}
+
+		const sortBy = document.getElementById('sortBy');
+		if (sortBy) {
+			sortBy.value = "title"; // Reset to default sorting option
+		}
+
+		currentPage = 1;
+
+		const sortedProducts = products.slice().sort((a, b) => a.name.localeCompare(b.name));
+
+		displayProducts(sortedProducts);
+
+		updatePaginationControls(sortedProducts);
+	}
+	
+		document.getElementById('toggle-filters').addEventListener('click', function () {
+			const filtersContainer = document.getElementById('filters-container');
+			if (filtersContainer.style.maxHeight) {
+				filtersContainer.style.maxHeight = null;
+				this.textContent = "Show Filters";
+			} else {
+				filtersContainer.style.maxHeight = filtersContainer.scrollHeight + "px";
+				this.textContent = "Hide Filters";
+			}
+		});
+
+		document.addEventListener("DOMContentLoaded", () => {
+		const sortedProducts = products.slice().sort((a, b) => a.name.localeCompare(b.name));
+
+		displayProducts(sortedProducts);
+
+		updatePaginationControls(sortedProducts);
+	});
+
+	// Display the initial product list
+	displayProducts(products); 
+</script>
+	
+</body>
+</html>
