@@ -22,6 +22,7 @@
 			
 		}
 		
+		
 		/* fonts */
 		
 		.lato-thin {
@@ -235,6 +236,12 @@
 			border-radius: 0.25em;
 			width: 17.3em;
 		}
+		
+		.sheet-filter input[type="checkbox"] {
+			vertical-align: middle;
+			margin-bottom: 0.35em;
+		}
+		
 		
 		.search {
 			height: 1.5em;
@@ -470,6 +477,7 @@
 					>
 					</div>
 				</div>
+				
 
 				<label class="filter-label" for="skills-filter">Skills:</label>
 				<div class="skills-filter">
@@ -501,6 +509,11 @@
 					<label><input type="checkbox" name="skills" value="tripleTonguing" onchange="applyFilter()">Triple Tonguing</label><br>
 				</div>
 
+					
+				<div class="sheet-filter">
+					<label class="filter-label">Sheet Music Available: <input class="available-box" type="checkbox" id="sheetMusicFilter" value="available" onchange="applyFilter()"></label>
+				</div>			
+				
 			</div>
 				
 		</div>
@@ -545,7 +558,9 @@
             year: 1887, 
             ensemble: "fullOrchestra", 
 		 	excerpts: 2,
-            skills: ["phrasing", "sectionPlaying", "softPlaying", "accuracy", "stoppedHorn", "rhythms", "tonguingFlexibility"] 
+            skills: ["phrasing", "sectionPlaying", "softPlaying", "accuracy", "stoppedHorn", "rhythms", "tonguingFlexibility"],
+		 	sheetMusicAvailable: true,
+		 	displayMusic: "available"
         },
         { id: 2, 
             name: "Symphony No. 1 in B minor, Op. 4", 
@@ -555,7 +570,9 @@
             year: 1883, 
             ensemble: "fullOrchestra", 
 		 	excerpts: 1,
-            skills: ["dynamicContrast", "rhythms"] 
+            skills: ["dynamicContrast", "rhythms"],
+		 	sheetMusicAvailable: true,
+		 	displayMusic: "available"
         },
         { id: 3,
             name: "Symphony in E minor, Op. 32 'Gaelic'",
@@ -565,7 +582,9 @@
             year: 1894,
             ensemble: "fullOrchestra",
 		 	excerpts: 1, 
-            skills: ["phrasing", "slurringFlexibility", "softPlaying"] 
+            skills: ["phrasing", "slurringFlexibility", "softPlaying"],
+		 	sheetMusicAvailable: true,
+		 	displayMusic: "available"
         },
         { id: 4,
             name: "Sumervar",
@@ -575,7 +594,9 @@
             year: 1988,
             ensemble: "chamberOrchestra",
 		 	excerpts: 1, 
-            skills: ["fingerFluency", "highRegister", "rhythms"] 
+            skills: ["fingerFluency", "highRegister", "rhythms"],
+		 	sheetMusicAvailable: true,
+		 	displayMusic: "available"
         },
         { id: 5,
             name: "Suite No. 1, Op. 3",
@@ -586,7 +607,9 @@
 		 	year: 1905,
             ensemble: "fullOrchestra",
 		 	excerpts: 1, 
-            skills: ["accuracy", "highRegister", "rhythms", "slurredFlexibility"] 
+            skills: ["accuracy", "highRegister", "rhythms", "slurredFlexibility"],
+		 	sheetMusicAvailable: true,
+		 	displayMusic: "available"
         },		
 		{
 			id: 6,
@@ -597,7 +620,9 @@
 			year: 1904,
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["phrasing", "staccatoStyle", "tonguingFlexibility", "endurance", "loudPlaying", "slurredFlexibility"]
+			skills: ["phrasing", "staccatoStyle", "tonguingFlexibility", "endurance", "loudPlaying", "slurredFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 7,
@@ -608,7 +633,9 @@
 			year: 1993,
 			ensemble: "windEnsemble",
 			excerpts: 4,
-			skills: ["endurance", "highRegister", "loudPlaying", "marcatoStyle", "accuracy", "cadenzaStyle", "dynamicContrast", "phrasing", "slurringFlexibility", "fingerFluency", "rhythms", "tonguingFlexibility"]
+			skills: ["endurance", "highRegister", "loudPlaying", "marcatoStyle", "accuracy", "cadenzaStyle", "dynamicContrast", "phrasing", "slurringFlexibility", "fingerFluency", "rhythms", "tonguingFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 8,
@@ -619,7 +646,9 @@
 			year: 1872,
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["phrasing", "slurredFlexibility", "softPlaying"]
+			skills: ["phrasing", "slurredFlexibility", "softPlaying"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 9,
@@ -630,7 +659,9 @@
 			year: 1879,
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["dynamicContrast", "endurance", "phrasing", "slurringFlexibility", "softPlaying"]
+			skills: ["dynamicContrast", "endurance", "phrasing", "slurringFlexibility", "softPlaying"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 10,
@@ -641,7 +672,9 @@
 			year: 1880,
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["slurredFlexibility", "softPlaying", "loudPlaying", "marcatoStyle", "rhythms"]
+			skills: ["slurredFlexibility", "softPlaying", "loudPlaying", "marcatoStyle", "rhythms"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 11,
@@ -653,7 +686,9 @@
 			year: 1869,
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["endurance", "phrasing", "rhythms", "slurringFlexibility", "softPlaying", "accuracy"]
+			skills: ["endurance", "phrasing", "rhythms", "slurringFlexibility", "softPlaying", "accuracy"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 12,
@@ -664,7 +699,9 @@
 			year: "1886",
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["dynamicContrast", "endurance", "phrasing", "slurredFlexibility", "loudPlaying", "marcatoStyle", "rhythms"]
+			skills: ["dynamicContrast", "endurance", "phrasing", "slurredFlexibility", "loudPlaying", "marcatoStyle", "rhythms"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 13,
@@ -677,7 +714,9 @@
 			ensemble: "chamberOrchestra",
 			displayEnsemble: "Chamber Orchestra & Choir",
 			excerpts: 1,
-			skills: ["endurance", "highRegister", "phrasing", "slurredFlexibility", "transposition"]
+			skills: ["endurance", "highRegister", "phrasing", "slurredFlexibility", "transposition"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 14,
@@ -688,7 +727,9 @@
 			year: 1896,
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["loudPlaying", "marcatoStyle", "tonguedFlexibility", "accuracy", "echoHorn", "rhythms", "slurredFlexibility", "softPlaying"]
+			skills: ["loudPlaying", "marcatoStyle", "tonguedFlexibility", "accuracy", "echoHorn", "rhythms", "slurredFlexibility", "softPlaying"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 15,
@@ -699,7 +740,9 @@
 			year: 1889,
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["dynamicContrast", "marcatoStyle", "rhythms", "tonguingFlexibility"]
+			skills: ["dynamicContrast", "marcatoStyle", "rhythms", "tonguingFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 16,
@@ -710,7 +753,9 @@
 			year: 1882,
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["loudPlaying", "marcatoStyle", "rhythms"]
+			skills: ["loudPlaying", "marcatoStyle", "rhythms"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 17,
@@ -721,7 +766,9 @@
 			year: 1894,
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["accuracy", "fingerFluency", "loudPlaying", "marcatoStyle", "tonguingFlexibility"]
+			skills: ["accuracy", "fingerFluency", "loudPlaying", "marcatoStyle", "tonguingFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 18,
@@ -732,7 +779,9 @@
 			year: 1912,
 			ensemble: "fullOrchestra",
 			excerpts: 3,
-			skills: ["loudPlaying", "marcatoStyle", "rhythms", "accuracy", "tonguingFlexibility", "endurance", "phrasing", "slurringFlexibility"]
+			skills: ["loudPlaying", "marcatoStyle", "rhythms", "accuracy", "tonguingFlexibility", "endurance", "phrasing", "slurringFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 19,
@@ -744,7 +793,9 @@
 			year: 1894,
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["phrasing", "slurredFlexibility"]		
+			skills: ["phrasing", "slurredFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 20,
@@ -756,7 +807,9 @@
 			year: 1891,
 			ensemble: "opera",
 			excerpts: 1,
-			skills: ["dynamicContrast", "loudPlaying", "marcatoStyle", "staccatoStyle"]		
+			skills: ["dynamicContrast", "loudPlaying", "marcatoStyle", "staccatoStyle"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},	
 		{
 			id: 21,
@@ -767,7 +820,9 @@
 			year: 1922,
 			ensemble: "fullOrchestra",
 			excerpts: 3,
-			skills: ["phrasing", "dynamicContrast", "marcatoPlaying", "slurredFlexibility"]	
+			skills: ["phrasing", "dynamicContrast", "marcatoPlaying", "slurredFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 22,
@@ -779,7 +834,9 @@
 			year: 1906,
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["dynamicContrast", "slurredFlexibility", "softPlaying", "transposition"]	
+			skills: ["dynamicContrast", "slurredFlexibility", "softPlaying", "transposition"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 23,
@@ -791,7 +848,9 @@
 			year: 1863,
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["endurance", "highRegister", "phrasing", "slurringFlexibility", "softPlaying"]	
+			skills: ["endurance", "highRegister", "phrasing", "slurringFlexibility", "softPlaying"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 24,
@@ -802,7 +861,9 @@
 			year: "1826",
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["accuracy", "endurance", "fingerFluency", "phrasing", "scalePractice", "slurringFlexibility", "tonguingFlexibility"]	
+			skills: ["accuracy", "endurance", "fingerFluency", "phrasing", "scalePractice", "slurringFlexibility", "tonguingFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 25,
@@ -814,7 +875,9 @@
 			year: 1891,
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["loudPlaying", "lowRegister", "phrasing", "slurringFlexibility", "endurance", "marcatoStyle"]	
+			skills: ["loudPlaying", "lowRegister", "phrasing", "slurringFlexibility", "endurance", "marcatoStyle"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 26,
@@ -825,7 +888,9 @@
 			year: "1900",
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["highRegister", "loudPlaying", "marcatoStyle", "rhythms"]	
+			skills: ["highRegister", "loudPlaying", "marcatoStyle", "rhythms"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 27,
@@ -836,7 +901,9 @@
 			year: "1908",
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["accuracy", "loudPlaying", "marcatoStyle", "rhythms", "tonguingFlexibility"]	
+			skills: ["accuracy", "loudPlaying", "marcatoStyle", "rhythms", "tonguingFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},	
 		{
 			id: 28,
@@ -847,7 +914,9 @@
 			year: "1866",
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["endurance", "loudPlaying", "marcatoStyle"]	
+			skills: ["endurance", "loudPlaying", "marcatoStyle"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},		
 		{
 			id: 29,
@@ -859,7 +928,9 @@
 			ensemble: "fullOrchestra",
 			displayEnsemble: "Full Orchestra (with Soprano, Baritone, & Chorus)",
 			excerpts: 1,
-			skills: ["softPlaying"]	
+			skills: ["softPlaying"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 30,
@@ -871,7 +942,9 @@
 			ensemble: "fullOrchestra",
 			displayEnsemble: "Full Orchestra (ballet)",
 			excerpts: 1,
-			skills: ["highRegister", "phrasing", "softPlaying", "transposition"]	
+			skills: ["highRegister", "phrasing", "softPlaying", "transposition"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 31,
@@ -882,7 +955,9 @@
 			year: "1896",
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["accuracy", "softPlaying", "stoppedHorn"]	
+			skills: ["accuracy", "softPlaying", "stoppedHorn"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 32,
@@ -893,7 +968,9 @@
 			year: "1875",
 			ensemble: "fullOrchestra",
 			excerpts: 2,
-			skills: ["fingerFluency", "loudPlaying", "staccatoStyle", "tonguingFlexibility", "transposition", "lowRegister", "accuracy"]	
+			skills: ["fingerFluency", "loudPlaying", "staccatoStyle", "tonguingFlexibility", "transposition", "lowRegister", "accuracy"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 33,
@@ -904,7 +981,9 @@
 			year: "1913",
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["accuracy", "fingerFluency", "loudPlaying", "marcatoStyle"]	
+			skills: ["accuracy", "fingerFluency", "loudPlaying", "marcatoStyle"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},
 		{
 			id: 34,
@@ -916,7 +995,9 @@
 			year: 1919,
 			ensemble: "fullOrchestra",
 			excerpts: 3,
-			skills: ["accuracy", "fingerFluency", "highRegister", "loudPlaying", "rhythms", "endurance", "lowRegister", "tonguingFlexibility"]	
+			skills: ["accuracy", "fingerFluency", "highRegister", "loudPlaying", "rhythms", "endurance", "lowRegister", "tonguingFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},	
 		{
 			id: 35,
@@ -927,7 +1008,9 @@
 			year: "1906",
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["dynamicContrast", "highRegister", "loudPlaying", "marcatoStyle", "rhythms", "sectionPlaying"]	
+			skills: ["dynamicContrast", "highRegister", "loudPlaying", "marcatoStyle", "rhythms", "sectionPlaying"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},	
 		{
 			id: 36,
@@ -938,7 +1021,9 @@
 			year: "1927",
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["accuracy", "loudPlaying", "lowRegister", "rhythms"]	
+			skills: ["accuracy", "loudPlaying", "lowRegister", "rhythms"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},	
 		{
 			id: 37,
@@ -949,7 +1034,9 @@
 			year: "2021",
 			ensemble: "chamberOrchestra",
 			excerpts: 1,
-			skills: ["dynamicContrast", "phrasing", "softPlaying", "slurringFlexibility"]	
+			skills: ["dynamicContrast", "phrasing", "softPlaying", "slurringFlexibility"],
+			sheetMusicAvailable: true,
+			displayMusic: "available"
 		},	
 		{
 			id: 38,
@@ -960,7 +1047,9 @@
 			year: 1916,
 			ensemble: "fullOrchestra",
 			excerpts: 1,
-			skills: ["phrasing"]
+			skills: ["phrasing"],
+			sheetMusicAvailable: false,
+			displayMusic: "unavailable"
 		}
 		
     ];
@@ -1068,6 +1157,13 @@
 							<div class="value">&nbsp;${product.excerpts}</div>
 						</div>
 					</div>
+
+					<div class="product-detail">
+							<div class="label">Sheet Music:</div>
+							<div class="value">${formatString(product.displayMusic)}</div>
+					</div>
+					
+
 					<div class="product-detail">
 						<div class="label">Skills:</div>
 						<div class="value skills-container">${skillsList}</div>
@@ -1118,6 +1214,7 @@
 		if (document.getElementById('ensembleOpera').checked) ensembleFilter.push('opera');
 
 		const searchFilter = document.getElementById('search').value.toLowerCase();
+		const sheetMusicFilter = document.getElementById('sheetMusicFilter').checked;
 
 		const skillsCheckboxes = document.querySelectorAll('input[name="skills"]:checked');
 		const selectedSkills = Array.from(skillsCheckboxes).map(checkbox => checkbox.value);
@@ -1136,6 +1233,11 @@
 
 		if (ensembleFilter.length > 0) {
 			filteredProducts = filteredProducts.filter(product => ensembleFilter.includes(product.ensemble));
+			currentPage = 1;
+		}
+		
+		if (sheetMusicFilter) {
+			filteredProducts = filteredProducts.filter(product => product.sheetMusicAvailable === true);
 			currentPage = 1;
 		}
 
