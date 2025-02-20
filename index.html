@@ -1382,7 +1382,7 @@
 	}
 
 
-	function applyFilter(returnFilteredProducts = false) {
+	function applyFilter(returnFilteredProducts = false, preservePage = false) {
 		// Gather filters
 		const categoryFilter = [];
 		if (document.getElementById('category1').checked) categoryFilter.push('Category1');
@@ -1406,30 +1406,32 @@
 
 		// Start with all products
 		let filteredProducts = products;
+		
+		let filterApplied = false // track filters
 
 		// Apply filters
 		if (categoryFilter.length > 0) {
 			filteredProducts = filteredProducts.filter(product => categoryFilter.includes(product.category));
-			currentPage = 1;
+			filterApplied = true;
 		}
 
 		if (ensembleFilter.length > 0) {
 			filteredProducts = filteredProducts.filter(product => ensembleFilter.includes(product.ensemble));
-			currentPage = 1;
+			filterApplied = true;
 		}
 		
 		if (sheetMusicFilter) {
 			filteredProducts = filteredProducts.filter(product => product.sheetMusicAvailable === true);
-			currentPage = 1;
+			filterApplied = true;
 		}
 
 		if (startYearInput !== null) {
 			filteredProducts = filteredProducts.filter(product => product.year >= startYearInput);
-			currentPage = 1;
+			filterApplied = true;
 		}
 		if (endYearInput !== null) {
 			filteredProducts = filteredProducts.filter(product => product.year <= endYearInput);
-			currentPage = 1;
+			filterApplied = true;
 		}
 
 		if (searchFilter) {
@@ -1437,15 +1439,20 @@
 				product.name.toLowerCase().includes(searchFilter) ||
 				product.composer.toLowerCase().includes(searchFilter)
 			);
-			currentPage = 1;
+			filterApplied = true;
 		}
 
 		if (selectedSkills.length > 0) {
 			filteredProducts = filteredProducts.filter(product =>
 				selectedSkills.every(skill => product.skills.includes(skill))
 			);
+			filterApplied = true;
+		}
+		
+		if (filterApplied && !preservePage) {
 			currentPage = 1;
 		}
+		
 
 		// Sort products
 		const sortBy = document.getElementById('sortBy').value;
@@ -1471,14 +1478,14 @@
 	document.getElementById('prev-btn').addEventListener('click', () => {
 		if (currentPage > 1) {
 			currentPage--;
-			const filteredProducts = applyFilter(true); // Get filtered products without re-rendering
+			const filteredProducts = applyFilter(true, true); // Get filtered products without re-rendering
 			displayProducts(filteredProducts);
 			updatePaginationControls(filteredProducts);
 		}
 	});
 
 	document.getElementById('next-btn').addEventListener('click', () => {
-		const filteredProducts = applyFilter(true); // Get filtered products without re-rendering
+		const filteredProducts = applyFilter(true, true); // Get filtered products without re-rendering
 		const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
 		if (currentPage < totalPages) {
