@@ -482,10 +482,8 @@
 				<label class="filter-label" for="skills-filter">Skills:</label>
 				<div class="skills-filter">
 					<label><input type="checkbox" name="skills" value="accuracy" onchange="applyFilter()">Accuracy</label><br>
-					<label><input type="checkbox" name="skills" value="atonality" onchange="applyFilter()">Atonality</label><br>
 					<label><input type="checkbox" name="skills" value="cadenzaStyle" onchange="applyFilter()">Cadenza Style</label><br>
 					<label><input type="checkbox" name="skills" value="changingTimeSignature" onchange="applyFilter()">Changing Time Signature</label><br>
-					<label><input type="checkbox" name="skills" value="doubleTonguing" onchange="applyFilter()">Double Tonguing</label><br>
 					<label><input type="checkbox" name="skills" value="dynamicContrast" onchange="applyFilter()">Dynamic Contrast</label><br>
 					<label><input type="checkbox" name="skills" value="echoHorn" onchange="applyFilter()">Echo Horn</label><br>
 					<label><input type="checkbox" name="skills" value="endurance" onchange="applyFilter()">Endurance</label><br>
@@ -494,7 +492,6 @@
 					<label><input type="checkbox" name="skills" value="loudPlaying" onchange="applyFilter()">Loud Playing</label><br>
 					<label><input type="checkbox" name="skills" value="lowRegister" onchange="applyFilter()">Low Register</label><br>
 					<label><input type="checkbox" name="skills" value="marcatoStyle" onchange="applyFilter()">Marcato Style</label><br>
-					<label><input type="checkbox" name="skills" value="ornaments" onchange="applyFilter()">Ornaments</label><br>
 					<label><input type="checkbox" name="skills" value="phrasing" onchange="applyFilter()">Phrasing</label><br>
 					<label><input type="checkbox" name="skills" value="rhythms" onchange="applyFilter()">Rhythms</label><br>
 					<label><input type="checkbox" name="skills" value="scalePractice" onchange="applyFilter()">Scale Practice</label><br>
@@ -505,8 +502,6 @@
 					<label><input type="checkbox" name="skills" value="stoppedHorn" onchange="applyFilter()">Stopped Horn</label><br>
 					<label><input type="checkbox" name="skills" value="tonguingFlexibility" onchange="applyFilter()">Tonguing Flexibility</label><br>
 					<label><input type="checkbox" name="skills" value="transposition" onchange="applyFilter()">Transposition</label><br>
-					<label><input type="checkbox" name="skills" value="trills" onchange="applyFilter()">Trills</label><br>
-					<label><input type="checkbox" name="skills" value="tripleTonguing" onchange="applyFilter()">Triple Tonguing</label><br>
 				</div>
 
 					
@@ -1232,8 +1227,21 @@
 			skills: ["loudPlaying", "rhythms"],
 			sheetMusicAvailable: false,
 			displayMusic: "unavailable"
+		},
+		{
+			id: 53,
+			name: "Symphony No. 1 in E minor",
+			url: "https://www.hiddenexcerpts.com/price-symphony1.html", //
+			composer: "Florence Price",
+			category: "Category2",
+			year: 1932,
+			ensemble: "fullOrchestra",
+			excerpts: 1,
+			skills: ["accuracy", "fingerFluency", "scalePractice", "softPlaying"],
+			sheetMusicAvailable: false,
+			displayMusic: "unavailable"
 		}
-		
+
     ];
 
     function formatString(str) {
