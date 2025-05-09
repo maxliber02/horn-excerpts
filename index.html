@@ -479,7 +479,7 @@
 				</div>
 				
 
-				<label class="filter-label" for="skills-filter">Skills:</label>
+				<label class="filter-label" for="skills-filter">Skills (scroll to see more):</label>
 				<div class="skills-filter">
 					<label><input type="checkbox" name="skills" value="accuracy" onchange="applyFilter()">Accuracy</label><br>
 					<label><input type="checkbox" name="skills" value="cadenzaStyle" onchange="applyFilter()">Cadenza Style</label><br>
@@ -525,7 +525,7 @@
 				<label for="sortBy">Sort Results</label>
 				<select id="sortBy" onchange="applyFilter()">
 					<option value="title">Title of Composition</option>
-					<option value="composer">Name of Composer</option>
+					<option value="composer">Name of Composer (Last Name)</option>
 					<option value="year">Composition Year</option>
 				</select>
 			</div>
@@ -914,7 +914,7 @@
 		},		
 		{
 			id: 29,
-			name: "A Sea Symphony (Symphony No.1)", 
+			name: "A Sea Symphony (Symphony No. 1)", 
 			url: "https://www.hiddenexcerpts.com/vaughan-williams-symphony1.html", //
 			composer: "Ralph Vaughan Williams",
 			category: "Category1",
@@ -1479,9 +1479,13 @@
 		const sortBy = document.getElementById('sortBy').value;
 		filteredProducts.sort((a, b) => {
 			if (sortBy === "title") {
-				return a.name.localeCompare(b.name);
+				const cleanTitleA = a.name.replace(/^(A |An |The )/i, '');
+				const cleanTitleB = b.name.replace(/^(A |An |The )/i, '');
+				return cleanTitleA.localeCompare(cleanTitleB);
 			} else if (sortBy === "composer") {
-				return a.composer.localeCompare(b.composer);
+				const lastNameA = a.composer.split(' ').slice(-1)[0];
+				const lastNameB = b.composer.split(' ').slice(-1)[0];
+				return lastNameA.localeCompare(lastNameB);
 			} else if (sortBy === "year") {
 				return a.year - b.year;
 			}
