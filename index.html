@@ -328,34 +328,74 @@
 		/* */
 		
 		@media (max-width: 1000px) {
-				
+			
+			body {
+				margin: 0;
+				padding: 0;
+				overflow-x: hidden;
+				width: 100%;
+			}
+			
 			.container {
 				grid-template-columns: 1fr;
+				width: 100%;
+				max-width: 100%;
+				margin: 0 auto;
+				box-sizing: border-box;
+				padding: 0.5em;
+				overflow-x: hidden;
 			}
-
+		
 			.filter {
 				height: auto; 
 				margin-bottom: 0.5em; 
+				box-sizing: border-box;
+				overflow-x: hidden;
 			}
 
 			.content {
-				padding: 1em; 
+				padding: 0.5em;
+				margin: 0 auto;
+				box-sizing: border-box;
+				overflow-x: hidden;
+			}
+			
+			.filter, .content {
+				width: 100%;
+				max-width: 100%;
+				margin: 0 auto;
+				box-sizing: border-box;
 			}
 
 			.product {
 				font-size: 0.9em; 
 				padding: 0.5em; 
+				box-sizing: border-box;
+				max-width: 100%;
+				overflow-x: wrap;
 			}
 
 			.skills-filter {
 				height: auto; 
 				overflow-y: visible; 
+				box-sizing: border-box;
+				max-width: 100%;
+				overflow-x: hidden;
+			}
+			
+			.category1,
+			.category2,
+			.category3 {
+				white-space: normal;
+				overflow-wrap: anywhere;
+				display: inline-block;
+				max-width: 90%;
+			}
+			
+			.back {
+				margin: 0.625em;
 			}
 
-			.search {
-				width: 100%; 
-				margin-bottom: 1em; 
-			}
 		}
 		
 		/* */
@@ -386,7 +426,6 @@
 			@media (max-width: 1050px) {
 				.filters-container {
 					max-height: 0;
-					
 					transition: max-height 0.3s ease-in-out;
 				}
 			}
